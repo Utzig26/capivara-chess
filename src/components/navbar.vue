@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { useRouter } from 'vue-router';
   import {computed} from 'vue';
   import {useStore} from "vuex";
   export default {
     name: "Nav",
     setup() {
-      const router = useRouter();
       const store = useStore();
       const auth = computed(() => store.state.authenticated)
-      console.log(auth)
       const signOut = async () => {
         await fetch('http://localhost:3000/auth/signOut', {
         method: 'POST',
@@ -23,7 +20,7 @@
       }
     }
   }
-  </script>
+</script>
 
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -40,7 +37,7 @@
           </li>
         </ul>
 
-        <ul class="navbar-nav me-auto mb-2 mb-md-0" v-if="auth">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" v-else>
           <li class="nav-item">
             <a class="nav-link" @click="signOut">Sign out</a>
           </li>

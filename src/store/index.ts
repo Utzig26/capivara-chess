@@ -7,7 +7,6 @@ export default createStore({
   mutations:{
     SET_AUTH:(state: { authenticated: boolean }, auth: boolean) => {
       state.authenticated = auth;
-      console.log(auth);
     },
   },
   actions:{
